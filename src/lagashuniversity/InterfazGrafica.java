@@ -6,6 +6,8 @@
 package lagashuniversity;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
@@ -20,7 +22,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
      */
     static final int CANT_PARQUIMETROS = 20;
     ArrayList<Parquimetro> parquimetros;
-    
+
     public InterfazGrafica() {
         initComponents();
         parquimetros = new ArrayList<>();
@@ -40,20 +42,21 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         SpinnerModel model = new SpinnerNumberModel(0,0,CANT_PARQUIMETROS - 1,1);
-        jSpinner1 = new javax.swing.JSpinner(model);
+        parquimetroNumero = new javax.swing.JSpinner(model);
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Detectado = new javax.swing.JButton();
+        MinutoTodos = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        importeText = new javax.swing.JTextField();
+        Finalizar = new javax.swing.JButton();
+        Minuto = new javax.swing.JButton();
+        setImporte = new javax.swing.JButton();
+        getMinutos = new javax.swing.JButton();
+        Patente = new javax.swing.JButton();
+        getImporte = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        patenteText = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,25 +64,25 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("Parquimetro N°:");
 
-        jSpinner1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        parquimetroNumero.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("PARQUIMETROS INTELIGENTES");
 
-        jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        jButton1.setText("Auto Detectado");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Detectado.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        Detectado.setText("Auto Detectado");
+        Detectado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                DetectadoActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        jButton2.setText("Avanzar Minuto (TODOS)");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        MinutoTodos.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        MinutoTodos.setText("Avanzar Minuto (TODOS)");
+        MinutoTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                MinutoTodosActionPerformed(evt);
             }
         });
 
@@ -87,58 +90,62 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel3.setText("Patente:");
 
-        jTextField1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        importeText.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        importeText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                importeTextActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        jButton3.setText("Finalizar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Finalizar.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        Finalizar.setText("Finalizar");
+        Finalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                FinalizarActionPerformed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        jButton4.setText("Avanzar Minuto");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Minuto.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        Minuto.setText("Avanzar Minuto");
+        Minuto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                MinutoActionPerformed(evt);
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        jButton5.setText("Consultar Patente");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        setImporte.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        setImporte.setText("Establecer Importe");
+        setImporte.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setImporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                setImporteActionPerformed(evt);
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        jButton6.setText("Consultar Importe");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        getMinutos.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        getMinutos.setText("Consultar Minutos");
+        getMinutos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getMinutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                getMinutosActionPerformed(evt);
             }
         });
 
-        jButton7.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        jButton7.setText("Establecer Importe");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        Patente.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        Patente.setText("Consultar Patente");
+        Patente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Patente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                PatenteActionPerformed(evt);
             }
         });
 
-        jButton8.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        jButton8.setText("Consultar Minutos");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        getImporte.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        getImporte.setText("Consultar Importe");
+        getImporte.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getImporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                getImporteActionPerformed(evt);
             }
         });
 
@@ -146,59 +153,59 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel4.setText("Importe:");
 
-        jTextField2.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        patenteText.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        patenteText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                patenteTextActionPerformed(evt);
             }
         });
+
+        jLabel5.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("SERVICIO EXTERNO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(patenteText))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(parquimetroNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 94, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addComponent(MinutoTodos)
+                        .addGap(34, 34, 34))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Detectado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Minuto, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                .addComponent(Finalizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField2))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton2))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(183, 183, 183)
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, Short.MAX_VALUE)))))
-                .addContainerGap())
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(importeText, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1))
+                            .addComponent(Patente, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                            .addComponent(getMinutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(getImporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(setImporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(65, 65, 65))))
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,84 +215,120 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(parquimetroNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MinutoTodos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
-                        .addComponent(jTextField2))
+                        .addComponent(patenteText))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1)
+                            .addComponent(importeText)
                             .addComponent(jLabel4))
                         .addGap(1, 1, 1)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jButton8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(setImporte)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addComponent(getImporte)))
                         .addGap(11, 11, 11)
-                        .addComponent(jButton6)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton7)
-                .addGap(75, 75, 75))
+                        .addComponent(getMinutos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Patente))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(Detectado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Minuto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Finalizar)))
+                .addGap(38, 38, 38))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void DetectadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DetectadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        int numero = (int) parquimetroNumero.getValue();
+        String patente = patenteText.getText();
+        if (Pattern.matches("^[a-zA-Z]{3}[0-9]{3}$", patente)
+                || Pattern.matches("^[a-zA-Z]{2}[0-9]{3}[a-zA-Z]{2}$", patente)) {
+            parquimetros.get(numero).autoDetectado(patente);
+        } else {
+            JOptionPane.showMessageDialog(null, "Patente no válida");
+            System.out.println("Patente no válida");
+        }
+    }//GEN-LAST:event_DetectadoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void MinutoTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinutoTodosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        for (Parquimetro parquimetro : parquimetros) {
+            parquimetro.avanzarMinuto();
+        }
+        JOptionPane.showMessageDialog(null, "Minuto avanzado para todos los parquímetros");
+        System.out.println("Minuto avanzado (para todos los parquimetros)");
+    }//GEN-LAST:event_MinutoTodosActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void importeTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importeTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_importeTextActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void FinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinalizarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        int numero = (int) parquimetroNumero.getValue();
+        parquimetros.get(numero).estacionamientoFinalizado();
+        System.out.println("Estacionamiento finalizado");
+    }//GEN-LAST:event_FinalizarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void MinutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinutoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        int numero = (int) parquimetroNumero.getValue();
+        parquimetros.get(numero).avanzarMinuto();
+        JOptionPane.showMessageDialog(null, "Minuto avanzado");
+        System.out.println("Minuto avanzado (Parquimetro "+numero+")");
+    }//GEN-LAST:event_MinutoActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void setImporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setImporteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        String importe = importeText.getText();
+        if (Pattern.matches("^[0-9]+$", importe)) {
+            int numero = (int) parquimetroNumero.getValue();
+            parquimetros.get(numero).setCentavosPorHora(Integer.parseInt(importe));
+            JOptionPane.showMessageDialog(null, "El Parquímetro tiene ahora un valor de "+importe+" centavos por hora");
+        }else{
+            JOptionPane.showMessageDialog(null, "Importe no válido");
+        }
+    }//GEN-LAST:event_setImporteActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void getMinutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getMinutosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+        int numero = (int) parquimetroNumero.getValue();
+        JOptionPane.showMessageDialog(null, parquimetros.get(numero).getMinutosEstacionado());
+    }//GEN-LAST:event_getMinutosActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void PatenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatenteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+        int numero = (int) parquimetroNumero.getValue();
+        JOptionPane.showMessageDialog(null, parquimetros.get(numero).getPatente());
+    }//GEN-LAST:event_PatenteActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void getImporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getImporteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+        int numero = (int) parquimetroNumero.getValue();
+        int valor = parquimetros.get(numero).getCentavosPorHora();
+        JOptionPane.showMessageDialog(null, "El Parquímetro tiene un valor de "+valor+" centavos por hora");
+    }//GEN-LAST:event_getImporteActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void patenteTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patenteTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_patenteTextActionPerformed
 
-    
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -322,20 +365,21 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton Detectado;
+    private javax.swing.JButton Finalizar;
+    private javax.swing.JButton Minuto;
+    private javax.swing.JButton MinutoTodos;
+    private javax.swing.JButton Patente;
+    private javax.swing.JButton getImporte;
+    private javax.swing.JButton getMinutos;
+    private javax.swing.JTextField importeText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JSpinner parquimetroNumero;
+    private javax.swing.JTextField patenteText;
+    private javax.swing.JButton setImporte;
     // End of variables declaration//GEN-END:variables
 }
