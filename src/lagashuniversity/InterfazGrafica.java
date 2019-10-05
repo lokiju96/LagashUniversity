@@ -36,7 +36,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        SpinnerModel model = new SpinnerNumberModel(0,0,CANT_PARQUIMETROS - 1,1);
+        SpinnerModel model = new SpinnerNumberModel(1,1,CANT_PARQUIMETROS,1);
         parquimetroNumero = new javax.swing.JSpinner(model);
         jLabel2 = new javax.swing.JLabel();
         Detectado = new javax.swing.JButton();
@@ -250,7 +250,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     private void DetectadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DetectadoActionPerformed
         // TODO add your handling code here:
-        int numero = (int) parquimetroNumero.getValue();
+        int numero = (int) parquimetroNumero.getValue()-1;
         String patente = patenteText.getText();
         if (Pattern.matches("^[a-zA-Z]{3}[0-9]{3}$", patente)
                 || Pattern.matches("^[a-zA-Z]{2}[0-9]{3}[a-zA-Z]{2}$", patente)) {
@@ -276,14 +276,14 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     private void FinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinalizarActionPerformed
         // TODO add your handling code here:
-        int numero = (int) parquimetroNumero.getValue();
+        int numero = (int) parquimetroNumero.getValue()-1;
         parquimetros.get(numero).estacionamientoFinalizado();
         System.out.println("Estacionamiento finalizado");
     }//GEN-LAST:event_FinalizarActionPerformed
 
     private void MinutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinutoActionPerformed
         // TODO add your handling code here:
-        int numero = (int) parquimetroNumero.getValue();
+        int numero = (int) parquimetroNumero.getValue()-1;
         parquimetros.get(numero).avanzarMinuto();
         JOptionPane.showMessageDialog(null, "Minuto avanzado");
         System.out.println("Minuto avanzado (Parquimetro "+numero+")");
@@ -293,7 +293,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         // TODO add your handling code here:
         String importe = importeText.getText();
         if (Pattern.matches("^[0-9]+$", importe)) {
-            int numero = (int) parquimetroNumero.getValue();
+            int numero = (int) parquimetroNumero.getValue()-1;
             parquimetros.get(numero).setCentavosPorHora(Integer.parseInt(importe));
             JOptionPane.showMessageDialog(null, "El Parquímetro tiene ahora un valor de "+importe+" centavos por hora");
         }else{
@@ -303,19 +303,19 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     private void getMinutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getMinutosActionPerformed
         // TODO add your handling code here:
-        int numero = (int) parquimetroNumero.getValue();
+        int numero = (int) parquimetroNumero.getValue()-1;
         JOptionPane.showMessageDialog(null, parquimetros.get(numero).getMinutosEstacionado());
     }//GEN-LAST:event_getMinutosActionPerformed
 
     private void PatenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatenteActionPerformed
         // TODO add your handling code here:
-        int numero = (int) parquimetroNumero.getValue();
+        int numero = (int) parquimetroNumero.getValue()-1;
         JOptionPane.showMessageDialog(null, parquimetros.get(numero).getPatente());
     }//GEN-LAST:event_PatenteActionPerformed
 
     private void getImporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getImporteActionPerformed
         // TODO add your handling code here:
-        int numero = (int) parquimetroNumero.getValue();
+        int numero = (int) parquimetroNumero.getValue()-1;
         int valor = parquimetros.get(numero).getCentavosPorHora();
         JOptionPane.showMessageDialog(null, "El Parquímetro tiene un valor de "+valor+" centavos por hora");
     }//GEN-LAST:event_getImporteActionPerformed

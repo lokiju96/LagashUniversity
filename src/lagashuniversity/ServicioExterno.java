@@ -53,7 +53,7 @@ public class ServicioExterno {
             Transport.send(message);
             transport.close();
 
-            JOptionPane.showMessageDialog(null, "Mail enviado");
+            JOptionPane.showMessageDialog(null, "Mail enviado al email "+destinatario);
         } catch (Exception e) {
             e.printStackTrace();
         }
