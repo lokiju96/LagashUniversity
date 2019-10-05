@@ -1,8 +1,8 @@
 package lagashuniversity;
 
-//Implementacion de la interfaz ControladorParquimetro
 import javax.swing.JOptionPane;
 
+//Implementacion de la interfaz ControladorParquimetro
 public class Parquimetro implements IControladorParquimetro {
 
     private String patente;

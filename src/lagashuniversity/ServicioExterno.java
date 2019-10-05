@@ -1,6 +1,5 @@
 package lagashuniversity;
 
-// Clase que se encarga del envio de emails al usuario del parquímetro
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
@@ -10,6 +9,7 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.Transport;
 import javax.swing.JOptionPane;
 
+// Clase que se encarga del envio de emails al usuario del parquímetro
 public class ServicioExterno {
 
     private static final String USERNAME = "lokijuop@gmail.com";
@@ -18,7 +18,6 @@ public class ServicioExterno {
     static String ASUNTO = "Ciudad de Buenos Aires - Parquímetros Inteligentes";
     static String CUERPO = "El valor a pagar por el vehiculo de patente PATENTE registrado a esta direccion de email es de IMPORTE centavos";
 
-    //Metodo para enviar emails (no implementado todavia)
     static void enviarEmail(String asunto, String cuerpo, String destinatario) {
         System.out.println("ASUNTO: " + asunto);
         System.out.println("CUERPO: " + cuerpo);
@@ -40,8 +39,7 @@ public class ServicioExterno {
                     return new PasswordAuthentication(USERNAME, PASSWORD);
                 }
             });
-
-            //session.setDebug(true);  
+ 
             Transport transport = session.getTransport();
             InternetAddress addressFrom = new InternetAddress(USERNAME);
 
@@ -62,7 +60,8 @@ public class ServicioExterno {
 
     }
 
-//Metodo para conseguir el email de la patente enviada
+    //Metodo para prueba con dos valores guardados en el código
+    //Se puede implementar con una base de datos
     static String obtenerEmailPorPatente(String patente) {
         if (patente.equals("AAA111")) {
             return "agustinminanvalero@hotmail.com";
