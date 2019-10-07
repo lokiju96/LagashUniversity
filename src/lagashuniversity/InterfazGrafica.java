@@ -52,6 +52,9 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         patenteText = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        ImporteTodos = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,7 +77,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         });
 
         MinutoTodos.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        MinutoTodos.setText("Avanzar Minuto (TODOS)");
+        MinutoTodos.setText("Avanzar Minuto");
         MinutoTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MinutoTodosActionPerformed(evt);
@@ -109,7 +112,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         });
 
         setImporte.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        setImporte.setText("Establecer Importe");
+        setImporte.setText("Modificar Importe");
         setImporte.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setImporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,48 +162,73 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("SERVICIO EXTERNO");
 
+        ImporteTodos.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        ImporteTodos.setText("Modificar Importe");
+        ImporteTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ImporteTodosActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("ACCIONES GLOBALES");
+
+        jLabel7.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("ACCIONES INDIVIDUALES");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(patenteText))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(parquimetroNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 94, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                        .addComponent(MinutoTodos)
-                        .addGap(34, 34, 34))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(Detectado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Minuto, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                .addComponent(Finalizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(Minuto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Finalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(setImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(Patente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(getMinutos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(getImporte, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)))
+                                .addGap(38, 38, 38)))
+                        .addGap(48, 48, 48))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(importeText, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(1, 1, 1))
-                            .addComponent(Patente, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addComponent(getMinutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(getImporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(setImporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(65, 65, 65))))
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(importeText))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(patenteText, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(parquimetroNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(MinutoTodos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ImporteTodos, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                                .addGap(83, 83, 83))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(74, 74, 74))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,19 +239,30 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(parquimetroNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(MinutoTodos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(patenteText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MinutoTodos))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(patenteText))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(importeText)
-                            .addComponent(jLabel4))
-                        .addGap(1, 1, 1)))
+                        .addComponent(jLabel4)
+                        .addComponent(importeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ImporteTodos))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Detectado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Minuto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Finalizar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(setImporte)
@@ -233,16 +272,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
                         .addGap(11, 11, 11)
                         .addComponent(getMinutos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Patente))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(Detectado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Minuto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Finalizar)))
-                .addGap(38, 38, 38))
+                        .addComponent(Patente)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -250,7 +281,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     private void DetectadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DetectadoActionPerformed
         // TODO add your handling code here:
-        int numero = (int) parquimetroNumero.getValue()-1;
+        int numero = (int) parquimetroNumero.getValue() - 1;
         String patente = patenteText.getText();
         if (Pattern.matches("^[a-zA-Z]{3}[0-9]{3}$", patente)
                 || Pattern.matches("^[a-zA-Z]{2}[0-9]{3}[a-zA-Z]{2}$", patente)) {
@@ -276,53 +307,66 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     private void FinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinalizarActionPerformed
         // TODO add your handling code here:
-        int numero = (int) parquimetroNumero.getValue()-1;
+        int numero = (int) parquimetroNumero.getValue() - 1;
         parquimetros.get(numero).estacionamientoFinalizado();
         System.out.println("Estacionamiento finalizado");
     }//GEN-LAST:event_FinalizarActionPerformed
 
     private void MinutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinutoActionPerformed
         // TODO add your handling code here:
-        int numero = (int) parquimetroNumero.getValue()-1;
+        int numero = (int) parquimetroNumero.getValue() - 1;
         parquimetros.get(numero).avanzarMinuto();
         JOptionPane.showMessageDialog(null, "Minuto avanzado");
-        System.out.println("Minuto avanzado (Parquimetro "+numero+")");
+        System.out.println("Minuto avanzado (Parquimetro " + numero + ")");
     }//GEN-LAST:event_MinutoActionPerformed
 
     private void setImporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setImporteActionPerformed
         // TODO add your handling code here:
         String importe = importeText.getText();
         if (Pattern.matches("^[0-9]+$", importe)) {
-            int numero = (int) parquimetroNumero.getValue()-1;
+            int numero = (int) parquimetroNumero.getValue() - 1;
             parquimetros.get(numero).setCentavosPorHora(Integer.parseInt(importe));
-            JOptionPane.showMessageDialog(null, "El Parquímetro tiene ahora un valor de "+importe+" centavos por hora");
-        }else{
+            JOptionPane.showMessageDialog(null, "El Parquímetro tiene ahora un valor de " + importe + " centavos por hora");
+        } else {
             JOptionPane.showMessageDialog(null, "Importe no válido");
         }
     }//GEN-LAST:event_setImporteActionPerformed
 
     private void getMinutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getMinutosActionPerformed
         // TODO add your handling code here:
-        int numero = (int) parquimetroNumero.getValue()-1;
+        int numero = (int) parquimetroNumero.getValue() - 1;
         JOptionPane.showMessageDialog(null, parquimetros.get(numero).getMinutosEstacionado());
     }//GEN-LAST:event_getMinutosActionPerformed
 
     private void PatenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatenteActionPerformed
         // TODO add your handling code here:
-        int numero = (int) parquimetroNumero.getValue()-1;
+        int numero = (int) parquimetroNumero.getValue() - 1;
         JOptionPane.showMessageDialog(null, parquimetros.get(numero).getPatente());
     }//GEN-LAST:event_PatenteActionPerformed
 
     private void getImporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getImporteActionPerformed
         // TODO add your handling code here:
-        int numero = (int) parquimetroNumero.getValue()-1;
+        int numero = (int) parquimetroNumero.getValue() - 1;
         int valor = parquimetros.get(numero).getCentavosPorHora();
-        JOptionPane.showMessageDialog(null, "El Parquímetro tiene un valor de "+valor+" centavos por hora");
+        JOptionPane.showMessageDialog(null, "El Parquímetro tiene un valor de " + valor + " centavos por hora");
     }//GEN-LAST:event_getImporteActionPerformed
 
     private void patenteTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patenteTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_patenteTextActionPerformed
+
+    private void ImporteTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImporteTodosActionPerformed
+        // TODO add your handling code here:
+        String importe = importeText.getText();
+        if (Pattern.matches("^[0-9]+$", importe)) {
+            for (int i = 0; i < CANT_PARQUIMETROS; i++) {
+                parquimetros.get(i).setCentavosPorHora(Integer.parseInt(importe));
+            }
+            JOptionPane.showMessageDialog(null, "Todos los parquimetros tienen ahora un valor de " + importe + " centavos por hora");
+        } else {
+            JOptionPane.showMessageDialog(null, "Importe no válido");
+        }
+    }//GEN-LAST:event_ImporteTodosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -362,6 +406,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Detectado;
     private javax.swing.JButton Finalizar;
+    private javax.swing.JButton ImporteTodos;
     private javax.swing.JButton Minuto;
     private javax.swing.JButton MinutoTodos;
     private javax.swing.JButton Patente;
@@ -373,6 +418,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JSpinner parquimetroNumero;
     private javax.swing.JTextField patenteText;
     private javax.swing.JButton setImporte;
